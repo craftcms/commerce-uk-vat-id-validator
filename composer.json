@@ -1,0 +1,48 @@
+{
+    "name": "craftcms/commerce-uk-vat-id-validator",
+    "description": "Adds a UK VAT ID validator to Craft Commerce",
+    "type": "craft-plugin",
+    "license": "mit",
+    "support": {
+        "email": "support@craftcms.com",
+        "issues": "https://github.com/craftcms/commerce-uk-vat-id-validator/issues?state=open",
+        "source": "https://github.com/craftcms/commerce-uk-vat-id-validator",
+        "docs": "https://github.com/craftcms/commerce-uk-vat-id-validator",
+        "rss": "https://github.com/craftcms/commerce-uk-vat-id-validator/releases.atom"
+    },
+    "require": {
+        "php": ">=8.0.2",
+        "craftcms/commerce": "^4.8.0|^5.3.0"
+    },
+    "require-dev": {
+        "craftcms/ecs": "dev-main",
+        "craftcms/phpstan": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "craftcms\\ukvatidvalidator\\": "src/"
+        }
+    },
+    "extra": {
+        "handle": "uk-vat-id-validator",
+        "name": "UK Vat ID Validator",
+        "developer": "Pixel & Tonic",
+        "documentationUrl": "https://github.com/craftcms/commerce-uk-vat-id-validator"
+    },
+    "scripts": {
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix",
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.2"
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    }
+}
+

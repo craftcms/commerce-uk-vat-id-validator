@@ -1,0 +1,43 @@
+{# @var plugin \craftcms\ukvatidvalidator\Plugin #}
+{# @var settings \craftcms\ukvatidvalidator\models\Settings #}
+
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.autoSuggestField({
+    label: 'HMRC Client ID'|t('uk-vat-id-validator'),
+    id: 'hmrcClientId',
+    name: 'hmrcClientId',
+    value: settings.hmrcClientId,
+    errors: settings.getErrors('hmrcClientId'),
+    required: true,
+    suggestions: craft.cp.getEnvSuggestions()
+}) }}
+
+{{ forms.autoSuggestField({
+    label: 'HMRC Client Secret'|t('uk-vat-id-validator'),
+    id: 'hmrcClientSecret',
+    name: 'hmrcClientSecret',
+    value: settings.getHmrcClientSecret(false),
+    errors: settings.getErrors('hmrcClientSecret'),
+    required: true,
+    suggestEnvVars: true,
+}) }}
+
+{{ forms.autoSuggestField({
+    label: 'HMRC Client Secret'|t('uk-vat-id-validator'),
+    id: 'hmrcClientSecret',
+    name: 'hmrcClientSecret',
+    value: settings.getHmrcClientSecret(false),
+    errors: settings.getErrors('hmrcClientSecret'),
+    required: true,
+    suggestEnvVars: true,
+}) }}
+
+ {{ forms.booleanMenuField({
+     label: 'Sandbox Test Mode'|t('commerce'),
+     id: 'isSandbox',
+     name: 'isSandbox',
+     value: settings.getIsSandbox(false),
+     errors: settings.getErrors('isSandbox'),
+     includeEnvVars: true,
+ }) }}

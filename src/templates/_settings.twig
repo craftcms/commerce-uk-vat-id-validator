@@ -7,18 +7,8 @@
     label: 'HMRC Client ID'|t('uk-vat-id-validator'),
     id: 'hmrcClientId',
     name: 'hmrcClientId',
-    value: settings.hmrcClientId,
+    value: settings.getHmrcClientId(false),
     errors: settings.getErrors('hmrcClientId'),
-    required: true,
-    suggestions: craft.cp.getEnvSuggestions()
-}) }}
-
-{{ forms.autoSuggestField({
-    label: 'HMRC Client Secret'|t('uk-vat-id-validator'),
-    id: 'hmrcClientSecret',
-    name: 'hmrcClientSecret',
-    value: settings.getHmrcClientSecret(false),
-    errors: settings.getErrors('hmrcClientSecret'),
     required: true,
     suggestEnvVars: true,
 }) }}

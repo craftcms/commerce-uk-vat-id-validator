@@ -1,6 +1,6 @@
 <?php
 
-namespace craftcms\ukvatidvalidator\models;
+namespace craft\commerce\ukvatidvalidator\models;
 
 use craft\base\Model;
 use craft\helpers\App;
@@ -33,6 +33,28 @@ class Settings extends Model
     private bool $_isSandbox = true;
 
     /**
+     * @inerhitdoc
+     */
+    public function attributes(): array
+    {
+        $names = parent::attributes();
+        $names[] = 'hmrcClientId';
+        $names[] = 'hmrcClientSecret';
+        $names[] = 'isSandbox';
+
+        return $names;
+    }
+
+    public function fields(): array
+    {
+        return [
+            'hmrcClientId' => fn() => $this->getHmrcClientId(false),
+            'hmrcClientSecret' => fn() => $this->getHmrcClientSecret(false),
+            'isSandbox' => fn() => $this->getIsSandbox(false),
+        ];
+    }
+
+    /**
      * @param bool $parse
      * @return string
      */
@@ -56,7 +78,7 @@ class Settings extends Model
      */
     public function getIsSandbox(bool $parse = true): bool
     {
-        return $this->_isSandbox;
+        return ($parse ? App::parseEnv($this->_isSandbox) : $this->_isSandbox) ?? '';
     }
 
     /**

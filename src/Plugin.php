@@ -1,11 +1,15 @@
 <?php
 
-namespace craftcms\ukvatidvalidator;
+namespace craft\commerce\ukvatidvalidator;
 
 use Craft;
+use craft\base\Event;
 use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
-use craftcms\ukvatidvalidator\models\Settings;
+use craft\commerce\events\TaxIdValidatorsEvent;
+use craft\commerce\services\Taxes;
+use craft\commerce\ukvatidvalidator\models\Settings;
+use craft\commerce\ukvatidvalidator\taxidvalidators\UkVatIdValidator;
 
 /**
  * UK Vat ID Validator plugin
@@ -15,6 +19,8 @@ use craftcms\ukvatidvalidator\models\Settings;
  * @author Pixel & Tonic <support@craftcms.com>
  * @copyright Pixel & Tonic
  * @license MIT
+ *
+ * @property-read \craft\ukvatidvalidator\models\Settings $settings
  */
 class Plugin extends BasePlugin
 {
@@ -88,13 +94,12 @@ class Plugin extends BasePlugin
     public function init(): void
     {
         parent::init();
-
         $this->attachEventHandlers();
 
         // Any code that creates an element query or loads Twig should be deferred until
         // after Craft is fully initialized, to avoid conflicts with other plugins/modules
         Craft::$app->onInit(function() {
-            // ...
+
         });
     }
 
@@ -115,15 +120,21 @@ class Plugin extends BasePlugin
      */
     protected function settingsHtml(): ?string
     {
+        $settings = $this->getSettings();
         return Craft::$app->view->renderTemplate('uk-vat-id-validator/_settings.twig', [
             'plugin' => $this,
-            'settings' => $this->getSettings(),
+            'settings' => $settings,
         ]);
     }
 
+    /**
+     * @return void
+     */
     private function attachEventHandlers(): void
     {
-        // Register event handlers here ...
-        // (see https://craftcms.com/docs/4.x/extend/events.html to get started)
+        Event::on(Taxes::class, Taxes::EVENT_REGISTER_TAX_ID_VALIDATORS, static function(TaxIdValidatorsEvent $event) {
+                $event->validators[] = new UkVatIdValidator();
+            }
+        );
     }
 }

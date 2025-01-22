@@ -1,15 +1,21 @@
 <?php
+/**
+ * @link https://craftcms.com/
+ * @copyright Copyright (c) Pixel & Tonic, Inc.
+ * @license https://craftcms.github.io/license/
+ */
 
 namespace craft\commerce\ukvatidvalidator\taxidvalidators;
 
 use craft\commerce\base\TaxIdValidatorInterface;
 use craft\helpers\StringHelper;
+use Craft;
 use craft\commerce\ukvatidvalidator\Plugin;
 
 /**
  * UkVatIdValidator checks if a given VAT ID is valid in the UK.
  * Test numbers: https://github.com/hmrc/vat-registered-companies-api/blob/main/public/api/conf/1.0/test-data/vrn.csv
- *
+ * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since 1.0.0
  */
 class UkVatIdValidator implements TaxIdValidatorInterface
@@ -37,7 +43,7 @@ class UkVatIdValidator implements TaxIdValidatorInterface
      */
     public static function displayName(): string
     {
-        return \Craft::t('commerce', 'UK VAT ID');
+        return Craft::t('commerce', 'UK VAT ID');
     }
 
     /**
@@ -54,30 +60,36 @@ class UkVatIdValidator implements TaxIdValidatorInterface
 
     private function getOauthAccessToken()
     {
-        // TODO: consider caching the token
-        // if ($cachedToken = \Craft::$app->getCache()->get('commerce:ukVat:accessToken')) {
-        //     return $cachedToken;
-        // }
+         if ($cachedToken = Craft::$app->getCache()->get('commerce:ukVat:accessToken')) {
+             return $cachedToken;
+         }
 
         $clientId = Plugin::getInstance()->getSettings()->getHmrcClientId();
         $clientSecret = Plugin::getInstance()->getSettings()->getHmrcClientSecret();
+        $accessToken = false;
 
-        $response = $this->_guzzleClient->post($this->sandboxApiUrl . '/oauth/token', [
-            'headers' => [
-                'Content-Type' => 'application/x-www-form-urlencoded',
-            ],
-            'form_params' => [
-                'client_id' => $clientId,
-                'client_secret' => $clientSecret,
-                'grant_type' => 'client_credentials',
-                'scope' => 'read:vat',
-            ],
-        ]);
+        try {
+            $response = $this->_guzzleClient->post($this->sandboxApiUrl . '/oauth/token', [
+                'headers' => [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                ],
+                'form_params' => [
+                    'client_id' => $clientId,
+                    'client_secret' => $clientSecret,
+                    'grant_type' => 'client_credentials',
+                    'scope' => 'read:vat',
+                ],
+            ]);
 
-        $accessToken = json_decode($response->getBody()->getContents(), true)['access_token'];
+            $accessToken = json_decode($response->getBody()->getContents(), true)['access_token'];
+        }catch (\Exception $e) {
+            Craft::error('Error getting UK VAT ID access token: ' . $e->getMessage());
+        }
 
-        // TODO: consider caching the token
-        // Craft::$app->getCache()->set('commerce:ukVat:accessToken', $accessToken);
+        if($accessToken) {
+            Craft::$app->getCache()->set('commerce:ukVat:accessToken', $accessToken, 7200);
+        }
+
         return $accessToken;
     }
 

@@ -7,10 +7,10 @@
 
 namespace craft\commerce\ukvatidvalidator\taxidvalidators;
 
-use craft\commerce\base\TaxIdValidatorInterface;
-use craft\helpers\StringHelper;
 use Craft;
+use craft\commerce\base\TaxIdValidatorInterface;
 use craft\commerce\ukvatidvalidator\Plugin;
+use craft\helpers\StringHelper;
 
 /**
  * UkVatIdValidator checks if a given VAT ID is valid in the UK.
@@ -60,9 +60,9 @@ class UkVatIdValidator implements TaxIdValidatorInterface
 
     private function getOauthAccessToken()
     {
-         if ($cachedToken = Craft::$app->getCache()->get('commerce:ukVat:accessToken')) {
-             return $cachedToken;
-         }
+        if ($cachedToken = Craft::$app->getCache()->get('commerce:ukVat:accessToken')) {
+            return $cachedToken;
+        }
 
         $clientId = Plugin::getInstance()->getSettings()->getHmrcClientId();
         $clientSecret = Plugin::getInstance()->getSettings()->getHmrcClientSecret();
@@ -82,11 +82,11 @@ class UkVatIdValidator implements TaxIdValidatorInterface
             ]);
 
             $accessToken = json_decode($response->getBody()->getContents(), true)['access_token'];
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             Craft::error('Error getting UK VAT ID access token: ' . $e->getMessage());
         }
 
-        if($accessToken) {
+        if ($accessToken) {
             Craft::$app->getCache()->set('commerce:ukVat:accessToken', $accessToken, 7200);
         }
 
@@ -99,7 +99,7 @@ class UkVatIdValidator implements TaxIdValidatorInterface
     public function validateExistence(string $idNumber): bool
     {
         $accessToken = $this->getOauthAccessToken();
-        $testMode = Plugin::getInstance()->getSettings()->getIsSandbox() ?? true;
+        $testMode = Plugin::getInstance()->getSettings()->getIsSandbox();
         $idNumber = ltrim($idNumber, 'GB');
 
         $url = $testMode ? $this->sandboxApiUrl : $this->productionApiUrl;

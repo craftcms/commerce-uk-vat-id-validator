@@ -14,7 +14,6 @@ use craft\helpers\App;
  */
 class Settings extends Model
 {
-
     /**
      * @var string|null
      */

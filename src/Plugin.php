@@ -99,7 +99,6 @@ class Plugin extends BasePlugin
         // Any code that creates an element query or loads Twig should be deferred until
         // after Craft is fully initialized, to avoid conflicts with other plugins/modules
         Craft::$app->onInit(function() {
-
         });
     }
 
@@ -133,8 +132,8 @@ class Plugin extends BasePlugin
     private function attachEventHandlers(): void
     {
         Event::on(Taxes::class, Taxes::EVENT_REGISTER_TAX_ID_VALIDATORS, static function(TaxIdValidatorsEvent $event) {
-                $event->validators[] = new UkVatIdValidator();
-            }
+            $event->validators[] = new UkVatIdValidator();
+        }
         );
     }
 }

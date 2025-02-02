@@ -133,7 +133,6 @@ class Plugin extends BasePlugin
     {
         Event::on(Taxes::class, Taxes::EVENT_REGISTER_TAX_ID_VALIDATORS, static function(TaxIdValidatorsEvent $event) {
             $event->validators[] = new UkVatIdValidator();
-        }
-        );
+        });
     }
 }

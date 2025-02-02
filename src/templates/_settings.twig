@@ -23,11 +23,11 @@
     suggestEnvVars: true,
 }) }}
 
- {{ forms.booleanMenuField({
-     label: 'Sandbox Test Mode'|t('commerce'),
-     id: 'isSandbox',
-     name: 'isSandbox',
-     value: settings.getIsSandbox(false),
-     errors: settings.getErrors('isSandbox'),
-     includeEnvVars: true,
- }) }}
+{{ forms.booleanMenuField({
+    label: 'Sandbox Test Mode'|t('commerce'),
+    id: 'isSandbox',
+    name: 'isSandbox',
+    value: settings.getIsSandbox(false),
+    errors: settings.getErrors('isSandbox'),
+    includeEnvVars: true,
+}) }}

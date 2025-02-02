@@ -6,7 +6,7 @@
 Out of the box, Craft Commerce supports basic formatting validation for VAT IDs in the European Union. This plugin provides additional checks to ensure tax rules are correctly applied for customers with _UK_ VAT IDs:
 
 - Tax rules are given a setting that allows merchants to disqualify taxes when a valid UK Tax ID (VAT number) is provided during checkout;
-- UK Tax IDs are validated directly with *<abbr title="HM Revenue & Customs">HMRC</abbr>’s official API*;
+- UK Tax IDs are validated directly with [HMRC](https://www.gov.uk/government/organisations/hm-revenue-customs)’s official API;
 
 ### How it Works
 
@@ -21,7 +21,7 @@ As tax rules are evaluated in the process of [calculating order totals](https://
 
 - Craft CMS 4.x or 5.x
 - Craft Commerce 4.8 or 5.3 and later
-- HMRC credentials for [Version 2 of the HMRC VAT API](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/vat-registered-companies-api/2.0)
+- HMRC credentials for [Version 2 of the HMRC VAT API](https://developer.service.hmrc.gov.uk/api-documentation/docs/using-the-hub)
 
 ## Installation
 

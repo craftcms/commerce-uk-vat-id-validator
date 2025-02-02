@@ -1,5 +1,7 @@
 # UK VAT ID Validator
 
+⚠️ Not yet publicly released.
+
 Adds a UK VAT ID validator to Craft Commerce.
 
 Automatic Tax Rate Validation adds a checkbox to Craft Commerce tax rates, allowing merchants to disqualify taxes when a valid UK Tax ID (VAT number) is provided during checkout. The plugin integrates directly with *HMRC’s official API* to verify VAT numbers. You will need HMRC API keys to use this plugin.

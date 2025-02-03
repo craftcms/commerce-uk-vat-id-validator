@@ -1,8 +1,5 @@
 # UK VAT ID Validator
 
-> [!WARNING]
-> This plugin has not yet publicly released. The installation instructions may not work.
-
 Out of the box, Craft Commerce supports basic formatting validation for VAT IDs in the European Union. This plugin provides additional checks to ensure tax rules are correctly applied for customers with _UK_ VAT IDs:
 
 - Tax rules are given a setting that allows merchants to disqualify taxes when a valid UK Tax ID (VAT number) is provided during checkout;
@@ -50,7 +47,7 @@ ddev craft plugin/install uk-vat-id-validator
 
 ### Step 1: Configure Plugin Settings
 
-Navigate to **Settings → UK Tax ID Validator** in the control panel, and fill in the following fields:  
+Navigate to **Settings** → **UK Tax ID Validator** in the control panel, and fill in the following fields:  
 
 - **HMRC Client ID**: Obtain this from the HMRC Developer Hub.
 - **HMRC Client Secret**: Provided alongside your HMRC Client ID.
@@ -61,7 +58,7 @@ Navigate to **Settings → UK Tax ID Validator** in the control panel, and fill 
 
 ### Optional Step 2: Enable Validation on Tax Rates
 
-- Navigate to **Commerce → Tax Rates**.
+- Navigate to **Commerce** → **Tax Rates**.
 - Edit a tax rate and check **UK VAT ID** under the **Disqualify with valid business tax ID?** option.
 - Save the tax rate.
 

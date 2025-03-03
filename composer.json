@@ -3,6 +3,12 @@
     "description": "Adds a UK VAT ID validator to Craft Commerce",
     "type": "craft-plugin",
     "license": "mit",
+    "authors": [
+        {
+            "name": "Pixel & Tonic",
+            "homepage": "https://pixelandtonic.com/"
+        }
+    ],
     "support": {
         "email": "support@craftcms.com",
         "issues": "https://github.com/craftcms/commerce-uk-vat-id-validator/issues?state=open",
@@ -27,7 +33,6 @@
     "extra": {
         "handle": "uk-vat-id-validator",
         "name": "UK Vat ID Validator",
-        "developer": "Pixel & Tonic",
         "documentationUrl": "https://github.com/craftcms/commerce-uk-vat-id-validator"
     },
     "scripts": {

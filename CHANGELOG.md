@@ -1,6 +1,6 @@
 # Release Notes for UK Vat ID Validator
 
-## Unreleased
+## 1.0.0.2
 - Fixed bug where the sandbox mode setting was being ignored. ([#1](https://github.com/craftcms/commerce-uk-vat-id-validator/issues/1))
 
 ## 1.0.0.1

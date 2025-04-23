@@ -66,10 +66,12 @@ class UkVatIdValidator implements TaxIdValidatorInterface
 
         $clientId = Plugin::getInstance()->getSettings()->getHmrcClientId();
         $clientSecret = Plugin::getInstance()->getSettings()->getHmrcClientSecret();
+        $testMode = Plugin::getInstance()->getSettings()->getIsSandbox();
         $accessToken = false;
 
         try {
-            $response = $this->_guzzleClient->post($this->sandboxApiUrl . '/oauth/token', [
+            $url =  $testMode ? $this->sandboxApiUrl : $this->productionApiUrl;
+            $response = $this->_guzzleClient->post($url . '/oauth/token', [
                 'headers' => [
                     'Content-Type' => 'application/x-www-form-urlencoded',
                 ],

@@ -70,7 +70,7 @@ class UkVatIdValidator implements TaxIdValidatorInterface
         $accessToken = false;
 
         try {
-            $url =  $testMode ? $this->sandboxApiUrl : $this->productionApiUrl;
+            $url = $testMode ? $this->sandboxApiUrl : $this->productionApiUrl;
             $response = $this->_guzzleClient->post($url . '/oauth/token', [
                 'headers' => [
                     'Content-Type' => 'application/x-www-form-urlencoded',

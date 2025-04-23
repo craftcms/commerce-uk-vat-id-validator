@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ad14a59430cca821a714072d243f7f3",
+    "content-hash": "02aa64a037e8dcda0284191f90281f22",
     "packages": [
         {
             "name": "cebe/markdown",
@@ -890,16 +890,16 @@
         },
         {
             "name": "craftcms/commerce",
-            "version": "4.8.0",
+            "version": "4.8.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce.git",
-                "reference": "daf41fdc23dcce2c600007af4c12a3fe83cb9ad3"
+                "reference": "fa7cc620106be8673c05660ff90e86a09845b36a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce/zipball/daf41fdc23dcce2c600007af4c12a3fe83cb9ad3",
-                "reference": "daf41fdc23dcce2c600007af4c12a3fe83cb9ad3",
+                "url": "https://api.github.com/repos/craftcms/commerce/zipball/fa7cc620106be8673c05660ff90e86a09845b36a",
+                "reference": "fa7cc620106be8673c05660ff90e86a09845b36a",
                 "shasum": ""
             },
             "require": {
@@ -958,7 +958,7 @@
                 "rss": "https://github.com/craftcms/commerce/releases.atom",
                 "source": "https://github.com/craftcms/commerce"
             },
-            "time": "2025-01-30T16:54:16+00:00"
+            "time": "2025-02-03T03:27:54+00:00"
         },
         {
             "name": "craftcms/plugin-installer",

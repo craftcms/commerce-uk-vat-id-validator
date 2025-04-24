@@ -27,9 +27,9 @@ class Settings extends Model
     /**
      * Whether to use the test-api.service.hmrc.gov.uk or api.service.hmrc.gov.uk url to communicate with API.
      *
-     * @var bool
+     * @var string|null
      */
-    private bool $_isSandbox = true;
+    private ?string $_isSandbox = null;
 
     /**
      * @inerhitdoc
@@ -73,9 +73,9 @@ class Settings extends Model
 
     /**
      * @param bool $parse
-     * @return bool
+     * @return bool|string
      */
-    public function getIsSandbox(bool $parse = true): bool
+    public function getIsSandbox(bool $parse = true): bool|string
     {
         return ($parse ? App::parseEnv($this->_isSandbox) : $this->_isSandbox) ?? '';
     }

@@ -1,5 +1,9 @@
 # Release Notes for UK Vat ID Validator
 
+## Unreleased
+- Added translations for 33 languages.
+- Fixed a bug where the “UK VAT ID” validator name and “Sandbox Test Mode” setting label weren’t translatable.
+
 ## 1.0.0.3
 - Fixed a bug where the sandbox mode setting could not be set to an environment variable. ([#2](https://github.com/craftcms/commerce-uk-vat-id-validator/issues/2))
 

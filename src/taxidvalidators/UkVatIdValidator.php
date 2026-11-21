@@ -43,7 +43,7 @@ class UkVatIdValidator implements TaxIdValidatorInterface
      */
     public static function displayName(): string
     {
-        return Craft::t('commerce', 'UK VAT ID');
+        return Craft::t('uk-vat-id-validator', 'UK VAT ID');
     }
 
     /**

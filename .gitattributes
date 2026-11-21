@@ -13,5 +13,9 @@ phpstan.neon export-ignore
 stubs/ export-ignore
 tests/ export-ignore
 
+# Translations other than the en source are synced by translation-sync
+/src/translations/*/*.php linguist-generated=true
+/src/translations/en/*.php -linguist-generated
+
 # Auto-detect text files and perform LF normalization
 * text=auto

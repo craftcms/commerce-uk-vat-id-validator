@@ -1,0 +1,8 @@
+# Branches whose translation files are kept in sync, oldest first.
+# When branches translate a string differently, the newest branch's translation wins.
+branches:
+  1.x: src/translations
+files:
+  - uk-vat-id-validator.php
+source_language: en
+commit_message: Update translations
